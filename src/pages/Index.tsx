@@ -29,12 +29,9 @@ const Index = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabType>('home');
   const [tasks, setTasks] = useState<Task[]>([
-    { id: 1, title: 'Гласные и согласные', emoji: '🔤', completed: true, stars: 3 },
-    { id: 2, title: 'Ударение', emoji: '📢', completed: true, stars: 2 },
-    { id: 3, title: 'Части речи', emoji: '📝', completed: false, stars: 0 },
-    { id: 4, title: 'Падежи', emoji: '📚', completed: false, stars: 0 },
-    { id: 5, title: 'Орфография', emoji: '✍️', completed: false, stars: 0 },
-    { id: 6, title: 'Пунктуация', emoji: '❗', completed: false, stars: 0 },
+    { id: 1, title: 'Найди букву', emoji: '🔍', completed: false, stars: 0 },
+    { id: 2, title: 'Порядок букв', emoji: '🔤', completed: false, stars: 0 },
+    { id: 3, title: 'Звуки и буквы', emoji: '🔊', completed: false, stars: 0 },
   ]);
 
   const [achievements, setAchievements] = useState<Achievement[]>([
@@ -52,11 +49,11 @@ const Index = () => {
 
   const handleTaskClick = (taskId: number) => {
     if (taskId === 1) {
-      navigate('/task');
-    } else {
-      setTasks(tasks.map(t => 
-        t.id === taskId ? { ...t, completed: !t.completed, stars: t.completed ? 0 : Math.floor(Math.random() * 3) + 1 } : t
-      ));
+      navigate('/task/find-letter');
+    } else if (taskId === 2) {
+      navigate('/task/letter-order');
+    } else if (taskId === 3) {
+      navigate('/task/sounds');
     }
   };
 
@@ -73,7 +70,19 @@ const Index = () => {
         </header>
 
         {activeTab === 'home' && (
-          <div className="space-y-4 animate-slide-up">
+          <div className="space-y-6 animate-slide-up">
+            <Card className="p-6 bg-gradient-to-r from-orange-100 to-orange-50 border-2 border-orange-300 shadow-lg">
+              <div className="flex items-center gap-4">
+                <div className="text-7xl animate-pulse-slow">🦊</div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-primary mb-2">Привет! Я Лиса!</h3>
+                  <p className="text-lg text-foreground">
+                    Я помогу тебе выучить русский язык! Давай начнём с заданий! 🌟
+                  </p>
+                </div>
+              </div>
+            </Card>
+
             <Card className="p-6 bg-white/80 backdrop-blur shadow-lg border-2 border-primary/20">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-2xl font-bold text-primary">Твои задания</h2>
@@ -83,7 +92,7 @@ const Index = () => {
               </div>
               <Progress value={progressPercent} className="h-3 mb-6" />
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4">
                 {tasks.map((task) => (
                   <Card
                     key={task.id}

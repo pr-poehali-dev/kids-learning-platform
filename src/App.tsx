@@ -6,6 +6,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Task from "./pages/Task";
+import LetterOrderTask from "./pages/LetterOrderTask";
+import SoundsTask from "./pages/SoundsTask";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -18,7 +20,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/task" element={<Task />} />
+          <Route path="/task/find-letter" element={<Task />} />
+          <Route path="/task/letter-order" element={<LetterOrderTask />} />
+          <Route path="/task/sounds" element={<SoundsTask />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
