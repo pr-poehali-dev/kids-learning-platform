@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -25,6 +26,7 @@ interface Achievement {
 }
 
 const Index = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabType>('home');
   const [tasks, setTasks] = useState<Task[]>([
     { id: 1, title: 'Гласные и согласные', emoji: '🔤', completed: true, stars: 3 },
@@ -49,9 +51,13 @@ const Index = () => {
   const progressPercent = (completedTasks / tasks.length) * 100;
 
   const handleTaskClick = (taskId: number) => {
-    setTasks(tasks.map(t => 
-      t.id === taskId ? { ...t, completed: !t.completed, stars: t.completed ? 0 : Math.floor(Math.random() * 3) + 1 } : t
-    ));
+    if (taskId === 1) {
+      navigate('/task');
+    } else {
+      setTasks(tasks.map(t => 
+        t.id === taskId ? { ...t, completed: !t.completed, stars: t.completed ? 0 : Math.floor(Math.random() * 3) + 1 } : t
+      ));
+    }
   };
 
   return (
