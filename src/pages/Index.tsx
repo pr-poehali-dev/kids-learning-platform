@@ -27,18 +27,18 @@ interface Achievement {
 const Index = () => {
   const [activeTab, setActiveTab] = useState<TabType>('home');
   const [tasks, setTasks] = useState<Task[]>([
-    { id: 1, title: 'Сложение чисел', emoji: '➕', completed: true, stars: 3 },
-    { id: 2, title: 'Вычитание', emoji: '➖', completed: true, stars: 2 },
-    { id: 3, title: 'Умножение', emoji: '✖️', completed: false, stars: 0 },
-    { id: 4, title: 'Деление', emoji: '➗', completed: false, stars: 0 },
-    { id: 5, title: 'Дроби', emoji: '🍕', completed: false, stars: 0 },
-    { id: 6, title: 'Геометрия', emoji: '📐', completed: false, stars: 0 },
+    { id: 1, title: 'Гласные и согласные', emoji: '🔤', completed: true, stars: 3 },
+    { id: 2, title: 'Ударение', emoji: '📢', completed: true, stars: 2 },
+    { id: 3, title: 'Части речи', emoji: '📝', completed: false, stars: 0 },
+    { id: 4, title: 'Падежи', emoji: '📚', completed: false, stars: 0 },
+    { id: 5, title: 'Орфография', emoji: '✍️', completed: false, stars: 0 },
+    { id: 6, title: 'Пунктуация', emoji: '❗', completed: false, stars: 0 },
   ]);
 
   const [achievements, setAchievements] = useState<Achievement[]>([
     { id: 1, title: 'Первый шаг', emoji: '👟', unlocked: true, description: 'Выполнил первое задание' },
     { id: 2, title: 'Звёздный ученик', emoji: '⭐', unlocked: true, description: 'Собрал 10 звёзд' },
-    { id: 3, title: 'Математик', emoji: '🧮', unlocked: false, description: 'Выполнил все задания по математике' },
+    { id: 3, title: 'Знаток русского', emoji: '📖', unlocked: false, description: 'Выполнил все задания по русскому языку' },
     { id: 4, title: 'Неделька', emoji: '📅', unlocked: false, description: 'Занимался 7 дней подряд' },
     { id: 5, title: 'Молния', emoji: '⚡', unlocked: false, description: 'Выполнил 5 заданий за день' },
     { id: 6, title: 'Чемпион', emoji: '🏆', unlocked: false, description: 'Получил 50 звёзд' },
@@ -146,7 +146,7 @@ const Index = () => {
                 
                 <div>
                   <div className="flex justify-between mb-2">
-                    <span className="font-semibold">📚 Математика</span>
+                    <span className="font-semibold">✍️ Орфография</span>
                     <span className="text-primary font-bold">67%</span>
                   </div>
                   <Progress value={67} className="h-3" />
@@ -154,7 +154,7 @@ const Index = () => {
 
                 <div>
                   <div className="flex justify-between mb-2">
-                    <span className="font-semibold">🔤 Русский язык</span>
+                    <span className="font-semibold">📝 Грамматика</span>
                     <span className="text-secondary font-bold">45%</span>
                   </div>
                   <Progress value={45} className="h-3" />
@@ -162,10 +162,10 @@ const Index = () => {
 
                 <div>
                   <div className="flex justify-between mb-2">
-                    <span className="font-semibold">🌍 Окружающий мир</span>
-                    <span className="text-orange-600 font-bold">33%</span>
+                    <span className="font-semibold">📖 Чтение</span>
+                    <span className="text-orange-600 font-bold">83%</span>
                   </div>
-                  <Progress value={33} className="h-3" />
+                  <Progress value={83} className="h-3" />
                 </div>
               </div>
             </Card>
